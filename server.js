@@ -2,8 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
-
-const errorHandler = require("./middleware/errorHandler.js");
+const colors = require("colors");
 
 const cors = require("cors");
 // const { default: connectDB } = require("./config/db");
@@ -20,8 +19,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/v1/shoes", shoes);
-
-app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

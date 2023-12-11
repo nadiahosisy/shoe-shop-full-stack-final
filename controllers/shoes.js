@@ -1,5 +1,4 @@
 const Shoe = require("../models/Shoe");
-const ErrorResponse = require("../utils/errorResponse");
 
 //@desc       Get all shoes
 //@route      GET /api/vi/shoes
@@ -21,12 +20,7 @@ exports.getShoe = async (req, res, next) => {
     const shoe = await Shoe.findById(req.params.id);
 
     if (!shoe) {
-      return next(
-        new ErrorResponse(
-          `Shoe that ends with '${req.params.id.slice(-6)}' was not found`,
-          404
-        )
-      );
+      return next(`Shoe not found with id of ${req.params.id}`, 404);
     }
 
     res.status(200).json({ success: true, data: shoe });
@@ -48,14 +42,7 @@ exports.createShoe = async (req, res, next) => {
       data: shoe,
     });
   } catch (err) {
-    return next(
-      new ErrorResponse(
-        `User with ID that ends with '${req.user.id.slice(
-          -6
-        )}' is not authorized to add a shoe`,
-        401
-      )
-    );
+    next(err);
   }
 };
 
@@ -75,12 +62,7 @@ exports.updateShoe = async (req, res, next) => {
     });
 
     if (!shoe) {
-      return next(
-        new ErrorResponse(
-          `Shoe that ends with '${req.params.id.slice(-6)}' was not found`,
-          404
-        )
-      );
+      return res.status(400).json({ success: false });
     }
   } catch (err) {
     next(err);
@@ -95,12 +77,7 @@ exports.deleteShoe = async (req, res, next) => {
     const shoe = await Shoe.findByIdAndDelete(req.params.id);
 
     if (!shoe) {
-      return next(
-        new ErrorResponse(
-          `Shoe that ends with '${req.params.id.slice(-6)}' was not found`,
-          404
-        )
-      );
+      return next(`Shoe not found with id of ${req.params.id}`, 404);
     }
     await shoe.deleteOne();
 
