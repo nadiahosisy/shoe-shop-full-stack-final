@@ -56,7 +56,7 @@ function AddProduct() {
     if (isValid) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/api/v1/shoes",
+          "https://shoes-api-xgf1.onrender.com/api/v1/shoes",
           {
             image: formData.image,
             name: formData.name,

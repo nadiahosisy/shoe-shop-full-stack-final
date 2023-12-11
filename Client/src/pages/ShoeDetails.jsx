@@ -4,7 +4,7 @@ import axios from "axios";
 import EditFormComponent from "../components/EditFormComponent";
 import { useNavigate } from "react-router-dom";
 
-const baseURL = "http://localhost:5000/api/v1/shoes";
+const baseURL = "https://shoes-api-xgf1.onrender.com/api/v1/shoes";
 
 const ShoeDetails = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ShoeDetails = () => {
   const deleteShoe = async (shoe) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/v1/shoes/${shoe._id}`
+        `https://shoes-api-xgf1.onrender.com/api/v1/shoes/${shoe._id}`
       );
       navigate("/catalog");
       window.alert("The Shoe was deleted");

@@ -57,7 +57,7 @@ function EditFormComponent(props) {
     if (isValid) {
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/v1/shoes/${shoe._id}`,
+          `https://shoes-api-xgf1.onrender.com/api/v1/shoes/${shoe._id}`,
           {
             image: formData.image,
             name: formData.name,
