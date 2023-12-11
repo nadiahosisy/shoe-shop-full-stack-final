@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 import { Shoe, Spinner } from "../components";
 
-const baseURL = "https://shoes-api-xgf1.onrender.com/api/v1/shoes";
+const baseURL = `${import.meta.env.VITE_BASE_URL}/shoes`;
 const Catalog = () => {
   const [shoes, setShoes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

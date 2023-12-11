@@ -56,7 +56,7 @@ function AddProduct() {
     if (isValid) {
       try {
         const response = await axios.post(
-          "https://shoes-api-xgf1.onrender.com/api/v1/shoes",
+          `${import.meta.env.VITE_BASE_URL}/shoes`,
           {
             image: formData.image,
             name: formData.name,
